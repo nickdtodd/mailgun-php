@@ -33,8 +33,7 @@ class RestClient{
 	}
 
 	public function post($endpointUrl, $postData = array(), $files = array()){
-	    preg_match('/(.+)(vendor|src)/', realpath(dirname(__FILE__)), $rootDirRegex);
-		$request = $this->mgClient->post($endpointUrl, array(), $postData, array('verify' => $rootDirRegex[1] . 'vendor/mailgun/mailgun-php/cacert-2018-01-17.pem'));
+		$request = $this->mgClient->post($endpointUrl, array(), $postData, array('verify' => '/var/www/Radioco/vendor/mailgun/mailgun-php/cacert-2018-01-17.pem'));
 
 		if(isset($files["message"])){
 			$this->hasFiles = True;
